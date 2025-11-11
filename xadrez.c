@@ -1,101 +1,189 @@
 /*
- * Programa: Simulador de Movimentos de Peças de Xadrez
- * Descrição: Simula o movimento de três peças (Torre, Bispo e Rainha)
- *            utilizando diferentes estruturas de repetição
- * Autor: Sistema de Xadrez Simplificado
+ * Programa: Simulador Avançado de Movimentos de Peças de Xadrez
+ * Descrição: Simula o movimento de quatro peças (Torre, Bispo, Rainha e Cavalo)
+ *            utilizando recursividade e loops complexos aninhados
+ * Autor: Sistema de Xadrez Avançado
+ * Versão: 3.0 - Com Recursividade e Loops Complexos
  */
 
 #include <stdio.h>
 
+// ========== DECLARAÇÃO DAS FUNÇÕES RECURSIVAS ==========
+
+/*
+ * Função: moverTorreRecursivo
+ * Descrição: Move a Torre recursivamente em uma direção especificada
+ * Parâmetros: 
+ *   - casasRestantes: número de casas ainda a serem percorridas
+ *   - direcao: string que indica a direção do movimento
+ * Retorno: void
+ */
+void moverTorreRecursivo(int casasRestantes, char direcao[]) {
+    // Caso base: quando não há mais casas para mover
+    if (casasRestantes <= 0) {
+        return;
+    }
+    
+    // Imprime a direção do movimento atual
+    printf("%s\n", direcao);
+    
+    // Chamada recursiva: move para a próxima casa
+    moverTorreRecursivo(casasRestantes - 1, direcao);
+}
+
+/*
+ * Função: moverBispoRecursivo
+ * Descrição: Move o Bispo recursivamente na diagonal utilizando loops aninhados
+ * Parâmetros:
+ *   - casasRestantes: número de casas ainda a serem percorridas
+ *   - direcaoVertical: direção vertical do movimento (Cima/Baixo)
+ *   - direcaoHorizontal: direção horizontal do movimento (Esquerda/Direita)
+ * Retorno: void
+ */
+void moverBispoRecursivo(int casasRestantes, char direcaoVertical[], char direcaoHorizontal[]) {
+    // Caso base: quando não há mais casas para mover
+    if (casasRestantes <= 0) {
+        return;
+    }
+    
+    // Loops aninhados para simular o movimento diagonal
+    // Loop externo: controla o movimento vertical (1 iteração por casa)
+    int vertical = 0;
+    for (vertical = 0; vertical < 1; vertical++) {
+        // Loop interno: controla o movimento horizontal (1 iteração por casa)
+        int horizontal = 0;
+        for (horizontal = 0; horizontal < 1; horizontal++) {
+            // Imprime a combinação das duas direções (diagonal)
+            printf("%s %s\n", direcaoVertical, direcaoHorizontal);
+        }
+    }
+    
+    // Chamada recursiva: move para a próxima casa diagonal
+    moverBispoRecursivo(casasRestantes - 1, direcaoVertical, direcaoHorizontal);
+}
+
+/*
+ * Função: moverRainhaRecursivo
+ * Descrição: Move a Rainha recursivamente em uma direção especificada
+ * Parâmetros:
+ *   - casasRestantes: número de casas ainda a serem percorridas
+ *   - direcao: string que indica a direção do movimento
+ * Retorno: void
+ */
+void moverRainhaRecursivo(int casasRestantes, char direcao[]) {
+    // Caso base: quando não há mais casas para mover
+    if (casasRestantes <= 0) {
+        return;
+    }
+    
+    // Imprime a direção do movimento atual
+    printf("%s\n", direcao);
+    
+    // Chamada recursiva: move para a próxima casa
+    moverRainhaRecursivo(casasRestantes - 1, direcao);
+}
+
+
+// ========== FUNÇÃO PRINCIPAL ==========
+
 int main() {
-    // Variáveis para controlar o número de casas movidas
-    int casasTorre = 5;      // Torre move 5 casas para a direita
-    int casasBispo = 5;      // Bispo move 5 casas na diagonal
-    int casasRainha = 8;     // Rainha move 8 casas para a esquerda
-    int contador = 0;        // Variável auxiliar para contagem
+    // Constantes para definir o número de casas a serem movidas
+    const int CASAS_TORRE = 5;
+    const int CASAS_BISPO = 5;
+    const int CASAS_RAINHA = 8;
+    const int CASAS_CAVALO_VERTICAL = 2;
+    const int CASAS_CAVALO_HORIZONTAL = 1;
     
-    // ========== MOVIMENTO DA TORRE ==========
-    // A Torre move-se em linha reta (horizontal ou vertical)
-    // Utilizando estrutura FOR para simular 5 casas para a direita
     
+    // ========== MOVIMENTO DA TORRE (RECURSIVO) ==========
     printf("=== MOVIMENTO DA TORRE ===\n");
-    printf("Movendo 5 casas para a direita:\n");
+    printf("Movendo 5 casas para a direita (recursivamente):\n");
     
-    for (contador = 1; contador <= casasTorre; contador++) {
-        printf("Direita\n");
-    }
+    // Chama a função recursiva para mover a Torre
+    moverTorreRecursivo(CASAS_TORRE, "Direita");
     
     printf("\n"); // Linha em branco para separação
     
     
-    // ========== MOVIMENTO DO BISPO ==========
-    // O Bispo move-se na diagonal
-    // Utilizando estrutura WHILE para simular 5 casas na diagonal (cima e direita)
-    
+    // ========== MOVIMENTO DO BISPO (RECURSIVO COM LOOPS ANINHADOS) ==========
     printf("=== MOVIMENTO DO BISPO ===\n");
-    printf("Movendo 5 casas na diagonal (cima e direita):\n");
+    printf("Movendo 5 casas na diagonal (cima e direita) recursivamente:\n");
     
-    contador = 0; // Reinicia o contador
-    while (contador < casasBispo) {
-        printf("Cima Direita\n");
-        contador++;
-    }
+    // Chama a função recursiva com loops aninhados para mover o Bispo
+    moverBispoRecursivo(CASAS_BISPO, "Cima", "Direita");
     
     printf("\n"); // Linha em branco para separação
     
     
-    // ========== MOVIMENTO DA RAINHA ==========
-    // A Rainha move-se em todas as direções
-    // Utilizando estrutura DO-WHILE para simular 8 casas para a esquerda
-    
+    // ========== MOVIMENTO DA RAINHA (RECURSIVO) ==========
     printf("=== MOVIMENTO DA RAINHA ===\n");
-    printf("Movendo 8 casas para a esquerda:\n");
+    printf("Movendo 8 casas para a esquerda (recursivamente):\n");
     
-    contador = 0; // Reinicia o contador
-    do {
-        printf("Esquerda\n");
-        contador++;
-    } while (contador < casasRainha);
+    // Chama a função recursiva para mover a Rainha
+    moverRainhaRecursivo(CASAS_RAINHA, "Esquerda");
     
     printf("\n"); // Linha em branco para separação
     
     
-    // ========== MOVIMENTO DO CAVALO ==========
-    // O Cavalo move-se em formato "L": 2 casas em uma direção + 1 casa perpendicular
-    // Utilizando LOOPS ANINHADOS (FOR externo e WHILE interno)
-    // Movimento: 2 casas para baixo, depois 1 casa para a esquerda
-    
+    // ========== MOVIMENTO DO CAVALO (LOOPS COMPLEXOS ANINHADOS) ==========
     printf("=== MOVIMENTO DO CAVALO ===\n");
-    printf("Movendo em 'L' (2 casas para baixo e 1 casa para a esquerda):\n");
+    printf("Movendo em 'L' (2 casas para cima e 1 casa para a direita):\n");
     
-    // Variáveis para controlar o movimento do Cavalo
-    int movimentosVertical = 2;    // Número de casas para baixo
-    int movimentosHorizontal = 1;  // Número de casas para esquerda
-    int etapa = 0;                 // Controla qual etapa do movimento (0=vertical, 1=horizontal)
+    /*
+     * Implementação com loops aninhados complexos
+     * Loop externo: controla as etapas do movimento em "L"
+     * Loop interno: executa os movimentos de cada etapa
+     * Utiliza múltiplas variáveis e condições com continue e break
+     */
     
-    // Loop externo FOR: controla as duas etapas do movimento em "L"
-    // Etapa 0: movimento vertical (2 casas para baixo)
-    // Etapa 1: movimento horizontal (1 casa para esquerda)
-    for (etapa = 0; etapa < 2; etapa++) {
+    int etapa = 0;              // Controla qual etapa do movimento (0=vertical, 1=horizontal)
+    int totalEtapas = 2;        // Total de etapas no movimento em "L"
+    int movimentosRealizados = 0;  // Contador de movimentos por etapa
+    int movimentosNecessarios = 0; // Número de movimentos necessários na etapa atual
+    
+    // Loop externo: itera sobre as duas etapas do movimento em "L"
+    for (etapa = 0; etapa < totalEtapas; etapa++) {
         
+        // Define quantos movimentos são necessários na etapa atual
         if (etapa == 0) {
-            // Primeira etapa: movimento vertical (2 casas para baixo)
-            contador = 0;
+            // Primeira etapa: movimento vertical (2 casas para cima)
+            movimentosNecessarios = CASAS_CAVALO_VERTICAL;
+        } else {
+            // Segunda etapa: movimento horizontal (1 casa para a direita)
+            movimentosNecessarios = CASAS_CAVALO_HORIZONTAL;
+        }
+        
+        // Reinicia o contador de movimentos para a nova etapa
+        movimentosRealizados = 0;
+        
+        // Loop interno: executa os movimentos da etapa atual
+        while (1) { // Loop infinito controlado por break
             
-            // Loop interno WHILE: executa o movimento para baixo
-            while (contador < movimentosVertical) {
-                printf("Baixo\n");
-                contador++;
+            // Verifica se já realizou todos os movimentos da etapa
+            if (movimentosRealizados >= movimentosNecessarios) {
+                break; // Sai do loop interno quando completar a etapa
             }
-        } 
-        else {
-            // Segunda etapa: movimento horizontal (1 casa para esquerda)
-            contador = 0;
             
-            // Loop interno WHILE: executa o movimento para esquerda
-            while (contador < movimentosHorizontal) {
-                printf("Esquerda\n");
-                contador++;
+            // Verifica condições inválidas (segurança extra)
+            if (movimentosRealizados < 0 || movimentosNecessarios < 0) {
+                continue; // Pula iterações inválidas (nunca deveria ocorrer)
+            }
+            
+            // Executa o movimento baseado na etapa atual
+            if (etapa == 0) {
+                // Primeira etapa: imprime movimento vertical (Cima)
+                printf("Cima\n");
+            } else if (etapa == 1) {
+                // Segunda etapa: imprime movimento horizontal (Direita)
+                printf("Direita\n");
+            }
+            
+            // Incrementa o contador de movimentos realizados
+            movimentosRealizados++;
+            
+            // Condição adicional: se atingiu o limite, força a saída
+            if (movimentosRealizados >= movimentosNecessarios) {
+                break; // Sai do loop interno
             }
         }
     }
