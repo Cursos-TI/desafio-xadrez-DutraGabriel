@@ -1,11 +1,3 @@
-/*
- * Programa: Simulador Avançado de Movimentos de Peças de Xadrez
- * Descrição: Simula o movimento de quatro peças (Torre, Bispo, Rainha e Cavalo)
- *            utilizando recursividade e loops complexos aninhados
- * Autor: Sistema de Xadrez Avançado
- * Versão: 3.0 - Com Recursividade e Loops Complexos
- */
-
 #include <stdio.h>
 
 // ========== DECLARAÇÃO DAS FUNÇÕES RECURSIVAS ==========
