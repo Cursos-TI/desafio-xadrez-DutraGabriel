@@ -58,6 +58,49 @@ int main() {
     } while (contador < casasRainha);
     
     printf("\n"); // Linha em branco para separação
+    
+    
+    // ========== MOVIMENTO DO CAVALO ==========
+    // O Cavalo move-se em formato "L": 2 casas em uma direção + 1 casa perpendicular
+    // Utilizando LOOPS ANINHADOS (FOR externo e WHILE interno)
+    // Movimento: 2 casas para baixo, depois 1 casa para a esquerda
+    
+    printf("=== MOVIMENTO DO CAVALO ===\n");
+    printf("Movendo em 'L' (2 casas para baixo e 1 casa para a esquerda):\n");
+    
+    // Variáveis para controlar o movimento do Cavalo
+    int movimentosVertical = 2;    // Número de casas para baixo
+    int movimentosHorizontal = 1;  // Número de casas para esquerda
+    int etapa = 0;                 // Controla qual etapa do movimento (0=vertical, 1=horizontal)
+    
+    // Loop externo FOR: controla as duas etapas do movimento em "L"
+    // Etapa 0: movimento vertical (2 casas para baixo)
+    // Etapa 1: movimento horizontal (1 casa para esquerda)
+    for (etapa = 0; etapa < 2; etapa++) {
+        
+        if (etapa == 0) {
+            // Primeira etapa: movimento vertical (2 casas para baixo)
+            contador = 0;
+            
+            // Loop interno WHILE: executa o movimento para baixo
+            while (contador < movimentosVertical) {
+                printf("Baixo\n");
+                contador++;
+            }
+        } 
+        else {
+            // Segunda etapa: movimento horizontal (1 casa para esquerda)
+            contador = 0;
+            
+            // Loop interno WHILE: executa o movimento para esquerda
+            while (contador < movimentosHorizontal) {
+                printf("Esquerda\n");
+                contador++;
+            }
+        }
+    }
+    
+    printf("\n"); // Linha em branco para separação
     printf("=== SIMULACAO CONCLUIDA ===\n");
     
     return 0;
