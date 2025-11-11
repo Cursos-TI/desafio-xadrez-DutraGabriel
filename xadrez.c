@@ -1,32 +1,64 @@
+/*
+ * Programa: Simulador de Movimentos de Peças de Xadrez
+ * Descrição: Simula o movimento de três peças (Torre, Bispo e Rainha)
+ *            utilizando diferentes estruturas de repetição
+ * Autor: Sistema de Xadrez Simplificado
+ */
+
 #include <stdio.h>
 
-// Desafio de Xadrez - MateCheck
-// Este código inicial serve como base para o desenvolvimento do sistema de movimentação das peças de xadrez.
-// O objetivo é utilizar estruturas de repetição e funções para determinar os limites de movimentação dentro do jogo.
-
 int main() {
-    // Nível Novato - Movimentação das Peças
-    // Sugestão: Declare variáveis constantes para representar o número de casas que cada peça pode se mover.
-
-    // Implementação de Movimentação do Bispo
-    // Sugestão: Utilize uma estrutura de repetição para simular a movimentação do Bispo em diagonal.
-
-    // Implementação de Movimentação da Torre
-    // Sugestão: Utilize uma estrutura de repetição para simular a movimentação da Torre para a direita.
-
-    // Implementação de Movimentação da Rainha
-    // Sugestão: Utilize uma estrutura de repetição para simular a movimentação da Rainha para a esquerda.
-
-    // Nível Aventureiro - Movimentação do Cavalo
-    // Sugestão: Utilize loops aninhados para simular a movimentação do Cavalo em L.
-    // Um loop pode representar a movimentação horizontal e outro vertical.
-
-    // Nível Mestre - Funções Recursivas e Loops Aninhados
-    // Sugestão: Substitua as movimentações das peças por funções recursivas.
-    // Exemplo: Crie uma função recursiva para o movimento do Bispo.
-
-    // Sugestão: Implemente a movimentação do Cavalo utilizando loops com variáveis múltiplas e condições avançadas.
-    // Inclua o uso de continue e break dentro dos loops.
-
+    // Variáveis para controlar o número de casas movidas
+    int casasTorre = 5;      // Torre move 5 casas para a direita
+    int casasBispo = 5;      // Bispo move 5 casas na diagonal
+    int casasRainha = 8;     // Rainha move 8 casas para a esquerda
+    int contador = 0;        // Variável auxiliar para contagem
+    
+    // ========== MOVIMENTO DA TORRE ==========
+    // A Torre move-se em linha reta (horizontal ou vertical)
+    // Utilizando estrutura FOR para simular 5 casas para a direita
+    
+    printf("=== MOVIMENTO DA TORRE ===\n");
+    printf("Movendo 5 casas para a direita:\n");
+    
+    for (contador = 1; contador <= casasTorre; contador++) {
+        printf("Direita\n");
+    }
+    
+    printf("\n"); // Linha em branco para separação
+    
+    
+    // ========== MOVIMENTO DO BISPO ==========
+    // O Bispo move-se na diagonal
+    // Utilizando estrutura WHILE para simular 5 casas na diagonal (cima e direita)
+    
+    printf("=== MOVIMENTO DO BISPO ===\n");
+    printf("Movendo 5 casas na diagonal (cima e direita):\n");
+    
+    contador = 0; // Reinicia o contador
+    while (contador < casasBispo) {
+        printf("Cima Direita\n");
+        contador++;
+    }
+    
+    printf("\n"); // Linha em branco para separação
+    
+    
+    // ========== MOVIMENTO DA RAINHA ==========
+    // A Rainha move-se em todas as direções
+    // Utilizando estrutura DO-WHILE para simular 8 casas para a esquerda
+    
+    printf("=== MOVIMENTO DA RAINHA ===\n");
+    printf("Movendo 8 casas para a esquerda:\n");
+    
+    contador = 0; // Reinicia o contador
+    do {
+        printf("Esquerda\n");
+        contador++;
+    } while (contador < casasRainha);
+    
+    printf("\n"); // Linha em branco para separação
+    printf("=== SIMULACAO CONCLUIDA ===\n");
+    
     return 0;
 }
